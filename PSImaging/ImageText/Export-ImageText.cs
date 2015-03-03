@@ -14,7 +14,7 @@ namespace PSImaging.ImageText
 {
     [Cmdlet("Export", "ImageText", SupportsShouldProcess = true)]
     [Description("Extracts text from a given image file.")]
-    public class Export_ImageText : PSCmdlet
+    public class Export_ImageText : BaseCmdlet
     {
         [Parameter(
             ParameterSetName = "Default",
@@ -45,10 +45,12 @@ namespace PSImaging.ImageText
             {
                 foreach (string path in paths)
                 {
-                    using (var img = Pix.LoadFromFile(path))
+                    var fixedPath = FixRelativePath(path);
+                    using (var img = Pix.LoadFromFile(fixedPath))
                     {
-                        Tesseract.Rect rect = this.Rect == null ? Tesseract.Rect.Empty : 
-                            new Tesseract.Rect(this.Rect.X, this.Rect.Y, this.Rect.Width, this.Rect.Height);
+                        Tesseract.Rect rect = this.Rect == null || this.Rect == System.Drawing.Rectangle.Empty 
+                            ? Tesseract.Rect.Empty 
+                            : new Tesseract.Rect(this.Rect.X, this.Rect.Y, this.Rect.Width, this.Rect.Height);
                             using (var page = engine.Process(img, rect))
                                 WriteObject(page.GetText());
                     }

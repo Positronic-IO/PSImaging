@@ -39,7 +39,7 @@ namespace PSImaging.ImageHash
             List<KeyValuePair<string, string>> hashes = new List<KeyValuePair<string, string>>();
             foreach (string path in this.Paths)
             {
-                string absolutePath = FixRelativePath(path, SessionState.Path.CurrentFileSystemLocation.Path);
+                string absolutePath = FixRelativePath(path);
                 hashes.Add(new KeyValuePair<string, string>(absolutePath, Get_ImageHash.GetImageHash(absolutePath, 6)));
             }
 

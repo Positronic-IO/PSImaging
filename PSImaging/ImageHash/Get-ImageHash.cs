@@ -35,12 +35,7 @@ namespace PSImaging.ImageHash
         protected override void ProcessRecord()
         {
             foreach (string path in this.Path)
-            {
-                string absolutePath = FixRelativePath(
-                    path, SessionState.Path.CurrentFileSystemLocation.Path);
-
-                WriteObject(GetImageHash(path, this.Level));
-            }
+                WriteObject(GetImageHash(FixRelativePath(path), this.Level));
         }
 
         public static string GetImageHash(string path, int level)
