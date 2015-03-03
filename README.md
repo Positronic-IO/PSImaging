@@ -91,6 +91,5 @@ Mode                LastWriteTime     Length Name
 
 ```
 
-Initially the only Cmdlets included are those mentioned in The Scripting Guys series on Imaging with PowerShell. I will maintain and expand this module to match interest.
 
 Your feedback is appreciated. Let me know what you'd like to see here.
