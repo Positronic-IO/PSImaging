@@ -92,4 +92,4 @@ Mode                LastWriteTime     Length Name
 ```
 
 
-Your feedback is appreciated. Let me know what you'd like to see here.
+Your feedback is appreciated. Let us know what we missed. Thank you for encouraging more contributions to this project by leaving us a tip at https://cash.me/$Positronic.
